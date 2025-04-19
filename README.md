@@ -12,8 +12,6 @@ To address these challenges, I aim to develop a platform that assists chefs and 
 2. Chefs who lack design training but aim to improve buffet presentation.
 3. Managers who require consistent and aesthetically pleasing setups to maintain service quality and minimize waste.
 
-![Target User](Images/target%20user.png)
-
 ## Features
 A web platform that contains an AI generation tool that generates customized buffet setups based on user inputs. For example, allowing user to select color palette, cuisine type (Western, Chinese), and event theme (seasonal/holiday) and download/save generated images.
 
