@@ -12,10 +12,12 @@ const HeroContainer = styled.div`
 `;
 
 const Title = styled.h1`
-  font-family: 'PoetsenOne', sans-serif;
-  font-size: 36px;
   color: #745E58;
-  margin-bottom: 20px;
+  font-family: "Poetsen One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 36px;
+  line-height: normal;
 `;
 
 const Description = styled.p`
