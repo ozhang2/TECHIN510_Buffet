@@ -74,7 +74,7 @@ npm run build
 | 6    | Preparing final demo; polishing layout, responsiveness, and visuals |
 
 ## Meeting Notes & Updates
-### Client Meeting – April 18, 2025
+### Client Meeting – May 16, 2025
 **Attendees:** Xinyu Wang (Client), Oulu Zhang (Developer)
 
 **Key Points:**
