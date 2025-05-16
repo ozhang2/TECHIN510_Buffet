@@ -1,61 +1,98 @@
 # TECHIN510 Buffet Table Setting Design Project
 
-## Project Scope
-Buffet chefs in China's new first-tier or second-tier cities often struggle to meet the manager's standards for table settings. This difficulty arises from a lack of template references, leading to significant time, material, and financial investment to achieve the desired aesthetic at a later stage.  
+## Overview
+Buffet chefs in China's new first-tier or second-tier cities often struggle to meet the manager's standards for table settings. The absence of standardized references leads to time-consuming and costly trial-and-error iterations. Chefs may also lack formal design training or access to international design exposure.
 
-Moreover, many chefs aspire to improve buffet presentation aesthetics or learn about them but lack opportunities to study abroad. They often face challenges in finding relevant information and integrating it effectively. Additionally, in high-traffic scenarios, poor table settings can result in inefficient service and increased food waste.  
-
-To address these challenges, I aim to develop a platform that assists chefs and buffet managers in improving or learning buffet presentation aesthetics. The platform will be designed to support users without a design background, allowing them to efficiently create visually appealing buffet setups while minimizing food waste.  
+This project aims to create a web platform that helps buffet chefs and managers quickly generate aesthetically pleasing buffet table layouts using AI, minimizing both food waste and effort.
 
 ## Target Users
-1. Buffet chefs and managers in China's new first-tier or second-tier cities.
-2. Chefs who lack design training but aim to improve buffet presentation.
-3. Managers who require consistent and aesthetically pleasing setups to maintain service quality and minimize waste.
+- Buffet chefs seeking design guidance to improve table aesthetics.
+- Buffet managers who need consistent and efficient buffet setups.
+- Chefs without design training who want structured support to improve visual presentation.
 
-## Features
-A web platform that contains an AI generation tool that generates customized buffet setups based on user inputs. For example, allowing user to select color palette, cuisine type (Western, Chinese), and event theme (seasonal/holiday) and download/save generated images.
+## Key Features
+**AI Buffet Layout Generator:** Customize buffet setup images by selecting:
+- Cuisine type (e.g., Chinese, Western)
+- Color palette
+- Event theme (e.g., seasonal, holiday)
 
-## Timeline
-Week 2: Basic interface + initial model integration  
-Week 3–4: Improve prompt system, enhance image generation  
-Week 5: User testing and refinement  
-Week 6: Final demo preparation  
+**Download & Save:** Users can export generated layouts for reference or print.
 
-## Meeting Notes & Progress Updates
-### Client Meeting (April 18, 2025)
-**Attendees**: Xinyu Wang (Client), Oulu Zhang (Developer)
+**Beginner-Friendly Interface:** No design experience required.
 
-#### Key Discussion Points:
-1. **Auto Layout Consistency**
-   - Ensure Auto Layout is applied to all components for better scalability and alignment
-   - Adjust margins, paddings, and spacing to match Figma design specifications
-   - Review layout changes in both desktop and mobile breakpoints
+**Responsive Design:** Usable on desktop and mobile devices.
 
-2. **Image Integration**
-   - Begin integrating visual assets across the website
-   - Focus on hero sections and feature highlights
-   - Optimize images for fast loading while maintaining quality
-   - Discuss image sourcing options (client-provided, stock, or AI-generated)
+## Setup Instructions
+### Prerequisites
+- Node.js (v18+ recommended)
+- npm or yarn
+- VS Code (optional, for development)
 
-3. **AI Generation – Subscription Plan**
-   - Explore subscription-based model for AI-generated content
-   - Potential gated features:
-     - Higher-quality output
-     - Export options
-     - History tracking
-   - Need further discussion on:
-     - Pricing tiers
-     - Value proposition
-     - User limitations
+### Installation
+Clone the repository:
+```bash
+git clone https://github.com/your-username/buffet-ai.git
+cd buffet-ai
+```
+Install dependencies:
+```bash
+npm install
+```
+Start the development server:
+```bash
+npm run dev
+```
+The app will be running at http://localhost:3000.
 
-4. **Next Steps**
-   - Finalize image content and placement
-   - Prepare draft proposal for subscription model with feature breakdown
-   - Align on visual polish (margins, spacing, responsive layout) in next review meeting
+(Optional) To build for production:
+```bash
+npm run build
+```
 
-## Contact Info
+## Usage
+1. Open the web app in a browser.
+2. Navigate to the AI Generator section.
+3. Input preferences:
+   - Select cuisine type
+   - Choose a color palette
+   - Select a theme or event type
+4. Click **Generate Layout** to preview image.
+5. Click **Download** to save the output.
+
+## UI & Layout Notes
+### AI Generate Section
+- Title, description, and CTA button aligned left.
+- Hero image (`chef-image.jpg`) offset to the left for staggered layout.
+- Banner background: `#EFEFEF`, full-width responsive design.
+
+## Project Timeline & Progress
+| Week | Progress Summary |
+|------|-----------------|
+| 2    | UI framework established; integrated initial AI model |
+| 3–4  | Improved prompt input; enhanced image generation pipeline |
+| 5    | User testing underway; interface refinements in progress |
+| 6    | Preparing final demo; polishing layout, responsiveness, and visuals |
+
+## Meeting Notes & Updates
+### Client Meeting – April 18, 2025
+**Attendees:** Xinyu Wang (Client), Oulu Zhang (Developer)
+
+**Key Points:**
+- Ensure consistent Auto Layout in all components.
+- Optimize image loading and placement (AI-generated or stock).
+- Discussed gated features for AI generation (e.g., export, history).
+- Next: finalize visual polish and propose subscription feature set.
+
+## Known Issues
+- AI-generated images may occasionally lack layout precision for complex event types.
+- Image download on some mobile devices may not trigger automatically.
+- Exported images are currently rasterized (non-editable).
+- No backend authentication – all features are open-access for now.
+- Subscription model under consideration, not yet implemented.
+
+## Contact
 Name: Oulu Zhang  
-Email: ouluzhang66@gmail.com  
+Email: ouluzhang66@gmail.com
 
 
 

@@ -5,7 +5,7 @@ const HeroContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 60px 20px;
+  padding: 213px 20px 60px 20px;
   text-align: center;
   max-width: 800px;
   margin: 0 auto;
@@ -18,6 +18,7 @@ const Title = styled.h1`
   font-style: normal;
   font-size: 36px;
   line-height: normal;
+  margin-bottom: 23px;
 `;
 
 const Description = styled.p`

@@ -1,73 +1,126 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useNavigate } from 'react-router-dom';
 
-const AIGenerateContainer = styled.section`
+const Container = styled.div`
+  min-height: 100vh;
+  /* background: #f5f5f5; */
   display: flex;
   align-items: center;
-  gap: 40px;
-  padding: 60px 20px;
-  background-color: #EFEFEF;
-  margin: 40px 0;
+  justify-content: center;
 `;
 
-const Content = styled.div`
-  flex: 1;
+const ContentWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  max-width: 1400px;
+  padding-top: 80px;
 `;
 
-const Title = styled.h2`
-  font-family: 'Poppins', sans-serif;
-  font-size: 36px;
-  font-weight: 500;
-  color: #000000;
-  margin-bottom: 20px;
-`;
-
-const Description = styled.p`
-  font-family: 'Poppins', sans-serif;
-  font-size: 14px;
-  line-height: 1.5;
-  color: #000000;
-  margin-bottom: 30px;
-`;
-
-const GetStartedButton = styled.button`
-  background-color: #D0D0D0;
-  color: #000000;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 100px;
-  font-size: 16px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: background-color 0.3s;
-
-  &:hover {
-    background-color: #B0B0B0;
+const ChefImage = styled.img`
+  width: 400px;
+  height: auto;
+  display: block;
+  margin-right: 60px;
+  @media (max-width: 900px) {
+    width: 300px;
+    margin-right: 32px;
   }
 `;
 
-const ImageContainer = styled.div`
-  flex: 1;
-  height: 400px;
-  background-color: #FFFFFF;
-  border-radius: 20px;
-  overflow: hidden;
+const RightContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  max-width: 500px;
+`;
+
+const Title = styled.h1`
+  font-family: 'Poppins', sans-serif;
+  font-size: 36px;
+  font-weight: 600;
+  color: #111;
+  margin-bottom: 17px;
+`;
+
+const Description = styled.p`
+  align-self: stretch;
+  color: #000;
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin-bottom: 50px;
+`;
+
+const StartButton = styled.button`
+  display: inline-flex;
+  padding: 10px 20px;
+  align-items: flex-start;
+  gap: 10px;
+  border-radius: 100px;
+  background: #D0D0D0;
+  color: #000;
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  border: none;
+  cursor: pointer;
+  margin-top: 16px;
+  transition: background 0.2s;
+  &:hover {
+    background: #b8a89a;
+  }
+`;
+
+const Banner = styled.div`
+  width: 100%;
+  height: 630px;
+  background-color: #EFEFEF;
+  display: flex;
+  align-items: center;
+  padding: 60px 0;
+`;
+
+const BannerImage = styled.img`
+  max-width: 100%;
+  max-height: 100%;
+  display: block;
+  margin: 0 auto;
+  object-fit: contain;
+  transform: translateX(-150px);
+`;
+
+const BannerContent = styled.div`
+  display: flex;
+  width: 425px;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  height: 249px;
+  flex-shrink: 0;
+  transform: translateX(-300px);
 `;
 
 const AIGenerate = () => {
+  const navigate = useNavigate();
   return (
-    <AIGenerateContainer>
-      <Content>
+    <Banner>
+      <BannerImage src={process.env.PUBLIC_URL + '/images/chef-image.jpg'} alt="AI Generate" />
+      <BannerContent>
         <Title>AI Generate</Title>
         <Description>
-          Follow the instructions step-by-step, and the AI platform will quickly help you design a unique buffet setting,
-          provide customized text suggestions, and calculate the approximate amount of food waste.
+          Follow the instructions step-by-step, and the AI platform will quickly help you design a unique buffet setting, provide customized text suggestions, and calculate the approximate amount of food waste.
         </Description>
-        <GetStartedButton>Start AI Generate</GetStartedButton>
-      </Content>
-      <ImageContainer />
-    </AIGenerateContainer>
+        <StartButton onClick={() => navigate('/ai-generate-detail')}>Start AI Generate</StartButton>
+      </BannerContent>
+    </Banner>
   );
 };
 
-export default AIGenerate; 
+export default AIGenerate;
