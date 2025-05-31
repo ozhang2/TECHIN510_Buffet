@@ -117,7 +117,7 @@ const AIGenerate = () => {
         <Description>
           Follow the instructions step-by-step, and the AI platform will quickly help you design a unique buffet setting, provide customized text suggestions, and calculate the approximate amount of food waste.
         </Description>
-        <StartButton onClick={() => navigate('/ai-generate-detail')}>Start AI Generate</StartButton>
+        <StartButton onClick={() => navigate('/ai-generate/category')}>Start AI Generate</StartButton>
       </BannerContent>
     </Banner>
   );
