@@ -94,7 +94,7 @@ const Footer = () => {
     <FooterContainer>
       <FooterContent>
         <MainFooterGrid>
-          <FooterSection>
+        <FooterSection>
             <SectionTitle>Find Us</SectionTitle>
             <SocialIcons>
               <SocialIcon href="#" aria-label="Instagram">
@@ -107,22 +107,22 @@ const Footer = () => {
                 ✉️ Email
               </SocialIcon>
             </SocialIcons>
-          </FooterSection>
+        </FooterSection>
           
-          <FooterSection>
+        <FooterSection>
             <SectionTitle>About Us</SectionTitle>
             <FooterLink href="#">Our Team</FooterLink>
             <FooterLink href="#">How We Work</FooterLink>
             <FooterLink href="#">Culture</FooterLink>
-          </FooterSection>
+        </FooterSection>
           
-          <FooterSection>
+        <FooterSection>
             <SectionTitle>Services</SectionTitle>
             <FooterLink href="#">AI Generate</FooterLink>
             <FooterLink href="#">Customized Services</FooterLink>
             <FooterLink href="#">Subscription</FooterLink>
             <FooterLink href="#">FAQ</FooterLink>
-          </FooterSection>
+        </FooterSection>
         </MainFooterGrid>
         
         <BottomLinks>

@@ -21,17 +21,13 @@ const HeaderContent = styled.div`
 const Logo = styled.div`
   display: flex;
   align-items: center;
-  gap: 8px;
-  border: 1.5px solid #FBF4EE;
-  border-radius: 50%;
-  padding: 10px 14px;
+  justify-content: center;
 `;
 
-const LogoText = styled.span`
-  font-family: 'PoetsenOne', sans-serif;
-  font-size: 14px;
-  color: #FBF4EE;
-  line-height: 1;
+const LogoImage = styled.img`
+  height: 40px;
+  width: auto;
+  object-fit: contain;
 `;
 
 const Nav = styled.nav`
@@ -78,12 +74,13 @@ const Header: React.FC = () => {
   return (
     <HeaderContainer>
       <HeaderContent>
-        <Logo>
-          <LogoText>nu</LogoText>
-          <LogoText>nu</LogoText>
-        </Logo>
+        <Link to="/">
+          <Logo>
+            <LogoImage src={process.env.PUBLIC_URL + '/images/nunu-logo.png'} alt="NUNU Logo" />
+          </Logo>
+        </Link>
         <Nav>
-          <NavLink to="/ai-generate">AI Generate</NavLink>
+          <NavLink to="/ai-generate/category">AI Generate</NavLink>
           <NavLink to="/customized-services">Customized Services</NavLink>
           <NavLink to="/template-reference">Template Reference</NavLink>
           <NavLink to="/community">Community</NavLink>

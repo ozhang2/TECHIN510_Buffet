@@ -10,8 +10,10 @@ const CategoryPicker = ({ onContinue = () => {} }) => {
   const [showConfirmation, setShowConfirmation] = useState(false);
   const [showSettingsSelection, setShowSettingsSelection] = useState(false);
   const [showColorSelection, setShowColorSelection] = useState(false);
+  const [showCountrySelection, setShowCountrySelection] = useState(false);
   const [selectedImages, setSelectedImages] = useState<number[]>([]);
   const [selectedColors, setSelectedColors] = useState<string[]>([]);
+  const [selectedCountries, setSelectedCountries] = useState<string[]>([]);
 
   const keywordOptions = [
     'flower', 'romantic', 'cold food', 'hot food', 
@@ -42,6 +44,22 @@ const CategoryPicker = ({ onContinue = () => {} }) => {
     { name: 'Purple', color: '#B39DDB' },
     { name: 'Pink', color: '#F8BBD9' },
     { name: 'Grey', color: '#DADCE0' }
+  ];
+
+  // 国家/菜系选项数组
+  const countryOptions = [
+    { name: 'China', flag: '🇨🇳' },
+    { name: 'United States', flag: '🇺🇸' },
+    { name: 'United Kingdom', flag: '🇬🇧' },
+    { name: 'France', flag: '🇫🇷' },
+    { name: 'Spain', flag: '🇪🇸' },
+    { name: 'Japan', flag: '🇯🇵' },
+    { name: 'Korea', flag: '🇰🇷' },
+    { name: 'Thailand', flag: '🇹🇭' },
+    { name: 'Singapore', flag: '🇸🇬' },
+    { name: 'Turkey', flag: '🇹🇷' },
+    { name: 'Mexico', flag: '🇲🇽' },
+    { name: 'Indian', flag: '🇮🇳' }
   ];
 
   useEffect(() => {
@@ -109,6 +127,14 @@ const CategoryPicker = ({ onContinue = () => {} }) => {
     }
   };
 
+  const handleCountrySelect = (countryName: string) => {
+    if (selectedCountries.includes(countryName)) {
+      setSelectedCountries(selectedCountries.filter(c => c !== countryName));
+    } else {
+      setSelectedCountries([...selectedCountries, countryName]);
+    }
+  };
+
   const handleSettingsContinue = () => {
     console.log('handleSettingsContinue called, going to color selection');
     console.log('Selected images:', selectedImages);
@@ -117,12 +143,36 @@ const CategoryPicker = ({ onContinue = () => {} }) => {
   };
 
   const handleColorContinue = () => {
-    console.log('handleColorContinue called');
+    console.log('handleColorContinue called, going to country selection');
     console.log('Selected colors:', selectedColors);
-    navigate('/ai-generate/next-step');
+    setShowColorSelection(false);
+    setShowCountrySelection(true);
+  };
+
+  const handleCountryContinue = () => {
+    console.log('handleCountryContinue called');
+    console.log('Selected keywords:', selectedKeywords);
+    console.log('Selected images:', selectedImages);
+    console.log('Selected colors:', selectedColors);
+    console.log('Selected countries:', selectedCountries);
+    
+    // 导航到图片生成页面，传递所有用户选择
+    navigate('/ai-generate/generate', {
+      state: {
+        selectedKeywords,
+        selectedImages,
+        selectedColors,
+        selectedCountries
+      }
+    });
   };
 
   const goBack = () => {
+    if (showCountrySelection) {
+      setShowCountrySelection(false);
+      setShowColorSelection(true);
+      return;
+    }
     if (showColorSelection) {
       setShowColorSelection(false);
       setShowSettingsSelection(true);
@@ -861,6 +911,217 @@ const CategoryPicker = ({ onContinue = () => {} }) => {
                     position: 'absolute',
                     top: '10px',
                     right: '10px',
+                    width: '24px',
+                    height: '24px',
+                    background: '#745E58',
+                    borderRadius: '50%',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    color: '#fff',
+                    fontSize: '16px',
+                    fontWeight: 'bold'
+                  }}>
+                    ✓
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // Step 7: Country Selection Page
+  if (showCountrySelection) {
+    console.log('Rendering showCountrySelection page');
+    return (
+      <div style={{
+        fontFamily: "'Poppins', sans-serif",
+        background: '#F7F4F1',
+        minHeight: '100vh',
+        display: 'flex',
+        flexDirection: 'column',
+        position: 'relative'
+      }}>
+        {/* 返回按钮 */}
+        <button
+          onClick={goBack}
+          style={{
+            position: 'absolute',
+            top: '30px',
+            left: '30px',
+            width: '40px',
+            height: '40px',
+            border: 'none',
+            background: 'rgba(255, 255, 255, 0.9)',
+            borderRadius: '50%',
+            cursor: 'pointer',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            fontSize: '18px',
+            color: '#745E58',
+            transition: 'all 0.3s ease',
+            boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)',
+            zIndex: 10
+          }}
+          onMouseEnter={(e) => {
+            (e.target as HTMLButtonElement).style.background = 'rgba(255, 255, 255, 1)';
+            (e.target as HTMLButtonElement).style.transform = 'translateX(-2px)';
+          }}
+          onMouseLeave={(e) => {
+            (e.target as HTMLButtonElement).style.background = 'rgba(255, 255, 255, 0.9)';
+            (e.target as HTMLButtonElement).style.transform = 'translateX(0)';
+          }}
+        >
+          ←
+        </button>
+
+        {/* 主内容 */}
+        <div style={{
+          maxWidth: '1200px',
+          margin: '0 auto',
+          padding: '100px 20px 60px 20px',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center'
+        }}>
+          {/* 标题区域 */}
+          <div style={{
+            textAlign: 'center',
+            marginBottom: '40px'
+          }}>
+            <h1 style={{
+              fontSize: '48px',
+              fontWeight: '500',
+              color: '#000',
+              marginBottom: '16px',
+              fontFamily: "'Poppins', sans-serif"
+            }}>
+              Pick the cuisines from different countries you are interested in to design a buffet
+            </h1>
+            <p style={{
+              fontSize: '16px',
+              color: '#745E58',
+              fontWeight: '400',
+              fontFamily: "'Poppins', sans-serif"
+            }}>
+              Click the country you want to design for your buffet
+            </p>
+          </div>
+
+          {/* Continue按钮 */}
+          <div style={{
+            textAlign: 'center',
+            marginBottom: '40px'
+          }}>
+            <button
+              onClick={handleCountryContinue}
+              style={{
+                background: '#D9CBBF',
+                color: '#000',
+                border: 'none',
+                padding: '12px 32px',
+                borderRadius: '50px',
+                fontSize: '16px',
+                fontWeight: '500',
+                cursor: 'pointer',
+                fontFamily: "'Poppins', sans-serif",
+                transition: 'all 0.3s ease',
+                boxShadow: '0 4px 12px rgba(217, 203, 191, 0.4)'
+              }}
+              onMouseEnter={(e) => {
+                (e.target as HTMLButtonElement).style.background = '#C4B5A8';
+                (e.target as HTMLButtonElement).style.transform = 'translateY(-2px)';
+                (e.target as HTMLButtonElement).style.boxShadow = '0 6px 16px rgba(217, 203, 191, 0.6)';
+              }}
+              onMouseLeave={(e) => {
+                (e.target as HTMLButtonElement).style.background = '#D9CBBF';
+                (e.target as HTMLButtonElement).style.transform = 'translateY(0)';
+                (e.target as HTMLButtonElement).style.boxShadow = '0 4px 12px rgba(217, 203, 191, 0.4)';
+              }}
+            >
+              Continue
+            </button>
+          </div>
+
+          {/* 国家网格 */}
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(4, 280px)',
+            gap: '30px',
+            justifyContent: 'center',
+            width: '100%',
+            maxWidth: '1200px'
+          }}>
+            {countryOptions.map((country) => (
+              <div
+                key={country.name}
+                onClick={() => handleCountrySelect(country.name)}
+                style={{
+                  position: 'relative',
+                  width: '280px',
+                  height: '200px',
+                  backgroundColor: '#fff',
+                  borderRadius: '20px',
+                  cursor: 'pointer',
+                  border: selectedCountries.includes(country.name) ? '4px solid #745E58' : '2px solid #E5E5E5',
+                  transition: 'all 0.3s ease',
+                  transform: selectedCountries.includes(country.name) ? 'scale(0.95)' : 'scale(1)',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  padding: '20px',
+                  boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)'
+                }}
+                onMouseEnter={(e) => {
+                  if (!selectedCountries.includes(country.name)) {
+                    (e.currentTarget as HTMLDivElement).style.transform = 'scale(1.05)';
+                    (e.currentTarget as HTMLDivElement).style.boxShadow = '0 8px 24px rgba(0, 0, 0, 0.15)';
+                  }
+                }}
+                onMouseLeave={(e) => {
+                  if (!selectedCountries.includes(country.name)) {
+                    (e.currentTarget as HTMLDivElement).style.transform = 'scale(1)';
+                    (e.currentTarget as HTMLDivElement).style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.1)';
+                  }
+                }}
+              >
+                {/* 国旗图标 */}
+                <div style={{
+                  fontSize: '80px',
+                  marginBottom: '20px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  width: '120px',
+                  height: '120px',
+                  borderRadius: '50%',
+                  background: selectedCountries.includes(country.name) ? 'rgba(116, 94, 88, 0.1)' : 'transparent'
+                }}>
+                  {country.flag}
+                </div>
+
+                {/* 国家名称 */}
+                <span style={{
+                  fontSize: '18px',
+                  fontWeight: '500',
+                  color: '#000',
+                  fontFamily: "'Poppins', sans-serif",
+                  textAlign: 'center'
+                }}>
+                  {country.name}
+                </span>
+
+                {/* 选中标记 */}
+                {selectedCountries.includes(country.name) && (
+                  <div style={{
+                    position: 'absolute',
+                    top: '15px',
+                    right: '15px',
                     width: '24px',
                     height: '24px',
                     background: '#745E58',

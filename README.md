@@ -3,7 +3,7 @@
 ## Overview
 Buffet chefs in China's new first-tier or second-tier cities often struggle to meet the manager's standards for table settings. The absence of standardized references leads to time-consuming and costly trial-and-error iterations. Chefs may also lack formal design training or access to international design exposure.
 
-This project aims to create a web platform that helps buffet chefs and managers quickly generate aesthetically pleasing buffet table layouts using AI, minimizing both food waste and effort.
+This project aims to create a web platform that helps buffet chefs and managers quickly generate aesthetically pleasing buffet table layouts using **real AI technology (Google Gemini)**, minimizing both food waste and effort.
 
 ## Target Users
 - Buffet chefs seeking design guidance to improve table aesthetics.
@@ -11,26 +11,46 @@ This project aims to create a web platform that helps buffet chefs and managers 
 - Chefs without design training who want structured support to improve visual presentation.
 
 ## Features
-- **AI Buffet Layout Generator**  
-  Customize layout by selecting cuisine type, color palette, and event theme.
-- **Download & Save**  
-  Export generated buffet layouts for printing or reuse.
-- **Beginner-Friendly Interface**  
-  No design experience needed.
-- **Responsive Design**  
+- **🎨 Real AI Buffet Layout Generator**  
+  Uses Google Gemini AI to generate custom buffet layouts based on your selected keywords and color preferences.
+- **🔄 Multi-Step Selection Process**  
+  Choose style keywords (flower, romantic, cold food, etc.) and color palettes through an intuitive interface.
+- **📥 Download & Save**  
+  Export AI-generated buffet layouts as high-quality PNG files.
+- **🎯 Beginner-Friendly Interface**  
+  No design experience needed - just select preferences and let AI do the work.
+- **📱 Responsive Design**  
   Usable on desktop and mobile devices.
+- **⚡ Real-time Generation**  
+  Generate unique layouts in 10-30 seconds using advanced AI.
 
 ## Setup Instructions
 ### Prerequisites
 - Node.js (v18+)
 - npm or yarn
+- Google Gemini API Key (for AI image generation)
 
 ### Installation
 ```bash
-git clone https://github.com/your-username/buffet-ai.git
-cd buffet-ai
+git clone https://github.com/ozhang2/TECHIN510_Buffet.git
+cd buffet-project-clean
 npm install
-npm run dev
+```
+
+### Google Gemini API Configuration
+1. Get your API key from [Google AI Studio](https://ai.google.dev/)
+2. Create a `.env` file in the project root:
+```
+REACT_APP_GEMINI_API_KEY=your-actual-api-key-here
+```
+3. Save the file and restart the development server
+
+For detailed setup instructions, see [GEMINI_SETUP.md](./GEMINI_SETUP.md)
+
+### Development
+```bash
+npm start
+# Open http://localhost:3000
 ```
 
 ### Build for Production
@@ -40,13 +60,30 @@ npm run build
 
 ## Usage
 1. Open browser at http://localhost:3000
-2. Go to the AI Generator section.
-3. Choose:
-   - Cuisine type (e.g., Chinese, Western)
-   - Color palette
-   - Event theme (e.g., seasonal)
-4. Click **Generate Layout**
-5. Click **Download** to save the layout
+2. Navigate to **"Start AI Generate"**
+3. Follow the multi-step process:
+   - **Step 1**: Click search bar to see keyword options
+   - **Step 2**: Select style keywords (flower, romantic, cold food, etc.)
+   - **Step 3**: Choose from 9 different setting styles
+   - **Step 4**: Pick your preferred color palette
+   - **Step 5**: Click **"Generate AI Buffet Layout"**
+4. Wait 10-30 seconds for Gemini to create your custom layout
+5. **Download** the generated image or **Generate New** for variations
+
+## Technical Stack
+- **Frontend**: React 18 + TypeScript
+- **Styling**: Styled-components + CSS-in-JS
+- **Routing**: React Router v6
+- **AI Integration**: Google Gemini AI API
+- **Build Tool**: Create React App
+- **Deployment**: Netlify
+
+## AI Integration Details
+- **Model**: Google Gemini 2.0 Flash
+- **Image Generation**: Text-to-image with fallback support
+- **Generation Time**: 10-30 seconds
+- **Cost**: Usage-based pricing (check Google AI pricing)
+- **Features**: Custom prompts, error handling, regeneration
 
 ## Project Progress
 | Week | Progress |

@@ -123,4 +123,4 @@ const AIGenerate = () => {
   );
 };
 
-export default AIGenerate;
+export default AIGenerate; 

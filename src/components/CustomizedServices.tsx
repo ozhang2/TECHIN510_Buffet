@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useNavigate } from 'react-router-dom';
 
 const CustomizedServicesContainer = styled.section`
   padding: 120px 20px;
@@ -93,6 +94,12 @@ const CusImage = styled.img`
 `;
 
 const CustomizedServices = () => {
+  const navigate = useNavigate();
+
+  const handleGetStarted = () => {
+    navigate('/customize-buffet');
+  };
+
   return (
     <CustomizedServicesContainer>
       <FlexWrapper>
@@ -101,7 +108,7 @@ const CustomizedServices = () => {
           <Description>
             For different companies, we will provide different customized design solutions, compared with AI generation, customized service is more complex, and there will be a follow-up support by target designers.
           </Description>
-          <GetStartedButton>get started</GetStartedButton>
+          <GetStartedButton onClick={handleGetStarted}>get started</GetStartedButton>
         </LeftContent>
         <CusImage src={process.env.PUBLIC_URL + '/images/landing-cus.jpg'} alt="Customized Service" />
       </FlexWrapper>

@@ -9,6 +9,8 @@ import TemplateReference from './components/TemplateReference';
 import Footer from './components/Footer';
 import { FiCamera } from 'react-icons/fi';
 import CategoryPicker from './components/CategoryPicker';
+import ImageGeneration from './components/ImageGeneration';
+import CustomizeBuffetPage from './components/CustomizeBuffetPage';
 
 const AppContainer = styled.div`
   font-family: 'Poppins', sans-serif;
@@ -240,13 +242,13 @@ function App() {
     <Router>
       <AppContainer>
         <Header />
-        <Routes>
-          <Route path="/" element={
+          <Routes>
+            <Route path="/" element={
             <MainContent>
               <MainContentInner>
                 <Hero />
               </MainContentInner>
-              <AIGenerate />
+                <AIGenerate />
               <MainContentInner>
                 <CustomizedServices />
                 <TemplateReference />
@@ -255,6 +257,12 @@ function App() {
           } />
           <Route path="/ai-generate/category" element={
             <CategoryPicker onContinue={() => window.location.href='/ai-generate/next-step'} />
+          } />
+          <Route path="/ai-generate/generate" element={
+            <ImageGeneration />
+          } />
+          <Route path="/customize-buffet" element={
+            <CustomizeBuffetPage />
           } />
           <Route path="/ai-generate/detail" element={
             <MainContent>
@@ -274,12 +282,12 @@ function App() {
                 </p>
               </div>
             </MainContent>
-          } />
-          <Route path="/customized-services" element={<div>Customized Services 页面</div>} />
-          <Route path="/template-reference" element={<div>Template Reference 页面</div>} />
-          <Route path="/community" element={<div>Community 页面</div>} />
-          <Route path="/login" element={<div>登录页面</div>} />
-        </Routes>
+            } />
+            <Route path="/customized-services" element={<div>Customized Services 页面</div>} />
+            <Route path="/template-reference" element={<div>Template Reference 页面</div>} />
+            <Route path="/community" element={<div>Community 页面</div>} />
+            <Route path="/login" element={<div>登录页面</div>} />
+          </Routes>
         <Footer />
       </AppContainer>
     </Router>
